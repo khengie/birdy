@@ -16,11 +16,14 @@
         }
         canvas {
             border: 2px solid black;
+            width: 100%;
+            max-width: 480px; /* Set max width for better fit on mobile */
+            height: auto;
         }
     </style>
 </head>
 <body>
-    <canvas id="gameCanvas" width="480" height="320"></canvas>
+    <canvas id="gameCanvas" width="320" height="200"></canvas>
 
     <script>
         const canvas = document.getElementById('gameCanvas');
@@ -28,7 +31,7 @@
 
         const bird = {
             x: 50,
-            y: 150,
+            y: 100,
             width: 20,
             height: 20,
             gravity: 0.2,
@@ -47,14 +50,14 @@
                 }
             },
             reset: function() {
-                this.y = 150;
+                this.y = 100;
                 this.velocity = 0;
             }
         };
 
         const pipes = [];
         const pipeWidth = 20;
-        const pipeGap = 100;
+        const pipeGap = 80;
         const pipeFrequency = 90;
         let frame = 0;
 
@@ -102,10 +105,10 @@
         }
 
         function updateScore() {
-            ctx.font = '20px Arial';
+            ctx.font = '16px Arial';
             ctx.fillStyle = 'black';
-            ctx.fillText('Score: ' + score, 10, 30);
-            ctx.fillText('High Score: ' + highScore, canvas.width - 150, 30);
+            ctx.fillText('Score: ' + score, 10, 20);
+            ctx.fillText('High Score: ' + highScore, canvas.width - 120, 20);
         }
 
         function restartGame() {
